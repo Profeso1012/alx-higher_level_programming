@@ -1,6 +1,7 @@
-
-
-SELECT title, tv_show_genres.genre_id FROM tv_shows
-LEFT JOIN tv_show_genres ON id=tv_show_genres.show_id
-WHERE tv_show_genres.show_id IS NULL
-ORDER BY title, tv_show_genres.genre_id;
+-- Lists shows with their genres
+-- ^
+SELECT s.title AS title, g.genre_id AS genre_id
+FROM tv_shows s LEFT OUTER JOIN tv_show_genres g
+  ON s.id = g.show_id
+WHERE g.genre_id IS NULL
+ORDER BY s.title, g.genre_id;
